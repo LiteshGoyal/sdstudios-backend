@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'accounts',
     'corsheaders',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'contact',
+    'blogs',
 ]
 
 MIDDLEWARE = [
@@ -135,3 +137,6 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
 ]
 STATIC_ROOT = BASE_DIR/'staticfiles'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
