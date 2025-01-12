@@ -4,11 +4,11 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 # Create your models here.
-class Profile(models.Model):
-    user = models.OneToOneField(User,on_delete=models.CASCADE,null=True)
-    email = models.EmailField(null=True,unique=True)
+# class Profile(models.Model):
+#     user = models.OneToOneField(User,on_delete=models.CASCADE,null=True)
+#     email = models.EmailField(null=True,unique=True)
 
-@receiver(post_save,sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        Profile.objects.create(user=instance)
+# @receiver(post_save,sender=User)
+# def create_user_profile(sender, instance, created, **kwargs):
+#     if created:
+#         Profile.objects.create(user=instance)
