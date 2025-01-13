@@ -34,6 +34,7 @@ class LoginView(generics.GenericAPIView):
                 'access': str(refresh.access_token),
             })
         return Response({"error": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
+    
 class LogoutView(APIView):
     def post(self, request):
         try:
