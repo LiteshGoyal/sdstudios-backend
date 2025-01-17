@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'springdjango.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'springdjango',
+        'NAME': 'springdjangostudios',
         'USER' : 'postgres',
         'PASSWORD' : 'postgres123',
         'HOST':'localhost',
@@ -141,11 +141,16 @@ STATIC_ROOT = BASE_DIR/'staticfiles'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+# settings.py
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),
-    'DEFAULT_PERMISSION_CLASSES': (
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
-    ),
+    ],
 }
+
+
+CORS_ALLOW_CREDENTIALS = True 
+# AUTH_USER_MODEL = 'accounts.User'
