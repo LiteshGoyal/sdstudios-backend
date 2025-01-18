@@ -1,9 +1,9 @@
-from . import models
 from rest_framework import serializers
+from .models import Blog
 
 class BlogSerializer(serializers.ModelSerializer):
-    # author_username = serializers.ReadOnlyField(source='author.username')
-    class Meta:
-        model = models.Blogs
-        fields = ['id','title','created_at','subtitle','description','image']
+    author = serializers.ReadOnlyField(source='author.username')
 
+    class Meta:
+        model = Blog
+        fields = ['id', 'title', 'subtitle', 'description', 'author', 'created_at','image']

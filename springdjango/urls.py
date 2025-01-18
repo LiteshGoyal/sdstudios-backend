@@ -29,6 +29,4 @@ urlpatterns = [
     path('api/', include('accounts.urls')),
     path('api/contact', include('contact.urls')),
     path('api/blogs/', include('blogs.urls')),
-]
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

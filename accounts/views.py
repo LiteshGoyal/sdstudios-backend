@@ -6,7 +6,11 @@ from django.contrib.auth import authenticate, login, logout
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny
+
 class SignUpView(APIView):
+    permission_classes = [AllowAny]  # Allow anyone to access this view
+
     def post(self, request):
         username = request.data.get('username')
         password = request.data.get('password')
@@ -17,14 +21,13 @@ class SignUpView(APIView):
 
         user = User.objects.create_user(username=username, password=password, email=email)
         token, _ = Token.objects.get_or_create(user=user)
-
         return Response({"token": token.key, "message": "User created successfully"}, status=status.HTTP_201_CREATED)
 
 class SignInView(APIView):
     def post(self, request):
         username = request.data.get('username')
         password = request.data.get('password')
-
+        print(f"Attempting login for username: {username}")
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
